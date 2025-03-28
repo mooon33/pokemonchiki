@@ -36,9 +36,17 @@ class User_reg(models.Model):
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
     address = models.CharField(max_length=200)
     photo = models.ImageField(upload_to='user_photos/', null=True, blank=True)
-    pan = models.CharField(max_length=20)
+    pan = models.CharField(
+        max_length=20,
+        default='NOT_PROVIDED',  # Временное значение для существующих записей
+        verbose_name='PAN Number'
+    )
     aadhaar = models.CharField(max_length=20)
-    dob = models.DateField()
+    ob = models.DateField(
+        verbose_name='Date of Birth',
+        default=timezone.now,  # Используем текущую дату как временное значение
+        blank=True  # Если поле необязательное
+    )
     created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
