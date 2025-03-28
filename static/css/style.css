@@ -376,7 +376,7 @@ header{
 }
 
 .about p{
-    font-family: 'Geologica Light';
+    font-family: 'Geologica Light' !important;
 }
 
 .survey{
@@ -427,6 +427,10 @@ header{
     color: var(--color-text);
     background-color: var(--color2);
     border: 1px solid var(--color-text)
+}
+
+.survey p{
+    font-family: 'Geologica Light';
 }
 
 footer {
@@ -609,6 +613,191 @@ header h1 {
     z-index: 2;
 }
 
+.chart-key  {
+    z-index: 2;
+    position: relative;
+}
+
+.key-list {
+    line-height: 30px;
+    list-style: none;
+    margin-left: 0;
+}
+
+.type-fx-icon {
+    display: inline-block;
+    border: 1px solid #f0f0f0;
+}
+
+.type-fx-cell,.type-fx-icon {
+    color: #ffdd57;
+    font-size: .625rem;
+    width: 40px;
+    height: 40px;
+    line-height: 26px;
+    text-align: center
+}
+
+#no-margin-list {
+    padding: 0;
+    color: var(--color-text);
+    font-family: Geologica Light;
+}
+
+.table-layer{
+    z-index: 2;
+}
+
+table {
+    margin: 0 auto 1rem;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.type-table th, .type-table td {
+    padding: 0;
+}
+
+thead {
+    display: table-header-group;
+    vertical-align: middle;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    unicode-bidi: isolate;
+    border-color: inherit;
+}
+
+.cell-atkdef {
+    font-family: Geologica Light;
+    color: var(--color-text);
+    font-size: 1rem;
+    font-weight: normal;
+    line-height: 1;
+    background-color: #502727;
+    opacity: 0.75;
+}
+
+.type-abbr {
+    width: 40px;
+}
+
+.type-fx-25,.type-fx-50 {
+    font-size: .75rem
+}
+
+.type-fx-null {
+    background-color: #f0f0f0
+}
+
+.type-fx-0 {
+    background-color: #2e3436;
+}
+
+.type-fx-25 {
+    background-color: #7c0000
+}
+
+.type-fx-50 {
+    background-color: #a40000
+}
+
+.type-fx-100 {
+    background-color: #502727;
+    opacity: 0.75;
+}
+
+.type-fx-200 {
+    background-color: #4e9a06
+}
+
+.type-fx-400 {
+    background-color: #73d216
+}
+
+@media(min-width: 900px) {
+    .type-cell,.type-fx-cell,.type-fx-icon {
+        height:36px;
+        font-size: .75rem;
+        line-height: 34px
+    }
+
+    .type-abbr,.type-fx-cell,.type-fx-icon {
+        width: 36px
+    }
+
+    .cell-atkdef {
+        line-height: 1.2
+    }
+
+    .type-fx-cell,.type-fx-icon {
+        font-size: .75rem;
+    }
+
+    .type-fx-25,.type-fx-50 {
+        font-size: .875rem
+    }
+}
+
+.type-fx-list {
+    margin-left: 1.75rem
+}
+
+.cell-dual-type {
+    display: flex
+}
+
+.cell-dual-type .type-icon:first-child {
+    margin-right: 1px
+}
+
+.type-table .cell-total {
+    padding: 0 10px
+}
+
+.has-pkmn>.cell-total {
+    cursor: pointer
+}
+
+.has-pkmn>.cell-total:hover {
+    background-color: #fffacd;
+    text-decoration: underline
+}
+
+.modal-content>table {
+    margin-bottom: 0
+}
+
+.type-table-dense .type-cell,.type-table-dense .type-fx-cell,.type-table-dense .type-fx-icon {
+    height: 26px;
+    font-size: .625rem;
+    line-height: 24px
+}
+
+.type-table-dense .type-abbr,.type-table-dense .type-fx-cell,.type-table-dense .type-fx-icon {
+    width: 26px
+}
+
+.infocard-list-types>.infocard {
+    width: 168px
+}
+
+@supports(display: grid) {
+    .infocard-list-types {
+        grid-template-columns:repeat(auto-fit, minmax(160px, 1fr))
+    }
+}
+
+.type-table-pokedex {
+    display: inline-block;
+    margin: 0 0 0 -1px
+}
+
+
 .type-normal {
     background-color: #aa9
 }
@@ -683,6 +872,12 @@ header h1 {
 
 .type-curse {
     background-color: #698
+}
+
+@media (max-width: 1219px) {
+    .resp-scroll {
+        overflow-x: auto;
+    }
 }
 
 
