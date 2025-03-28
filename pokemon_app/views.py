@@ -6,12 +6,12 @@ from .models import User, City  # только те модели, которые
 from .forms import RegistrationForm, ApplicationForm
 from django.shortcuts import render
 
-def fullpage_view(request):
-    return render(request, 'pokemon_app/fullpage.html')
+def home_view(request):
+    return render(request, 'pokemon_app/home.html')
 
 def types_view(request):
     return render(request, 'pokemon_app/types.html')
-    return redirect('fullpage')  # Редирект на главную
+    # return redirect('home')  # Редирект на главную
 
 
 def register_view(request):
