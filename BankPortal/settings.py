@@ -61,7 +61,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 AUTH_PASSWORD_VALIDATORS = [
     {

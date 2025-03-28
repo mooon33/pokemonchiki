@@ -446,9 +446,9 @@
             <nav>
                 <img src="https://clipartcraft.com/images/bank-logo-icon-9.png" alt="logo">
                 <ul>
-                    <li><a href="#">Home</a></li>
+                    <li><a href="{% url 'Homepage' %}">Home</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="{% url 'support page' %}">Contact</a></li>
+                    <li><a href="{% url 'support' %}">Contact</a></li>
                     {% if user.is_authenticated %}
                         {% if User.Role == "Manager" %}
                         <li><a href="{% url 'Manager' %}">Manager Dashboard</a></li>
@@ -483,7 +483,7 @@
                     <a href="{% url 'Dashboard' %}" class="btn">Dashboard</a>
                 {% endif %}
             {% else %}
-                <a href="{% url 'Sign-up' %}" class="btn">Get Started</a>
+                <a href="{% url 'signup' %}" class="btn">Get Started</a>
             {% endif %}
         </div>
     </section>

@@ -1,8 +1,11 @@
 
-from django.urls import path
+from django.urls import path, include
 from . import views
+from django.contrib.auth import views as auth_views
 urlpatterns = [
+path("support/", views.support, name="support"),
     path("",views.homepage,name='Homepage'),
+
     path("user/",views.User_profile,name="User"),
     path("edit/",views.edit_profile,name="Edit Profile"),
     path("dashbaord/",views.dashboard,name="Dashboard"),
@@ -10,12 +13,12 @@ urlpatterns = [
     path("Withdrawal/",views.withdrawal,name="WithDrawal"),
     path("transfer/",views.Transfer,name="Transfers"),
     path("loginpg/",views.loginpg,name="login page"),
-    path("support/",views.support,name="support page"),
     path("transaction/",views.transaction,name="transaction page"),
-    path("sign-up/",views.sign_up,name="Sign-up"),
+    path("signup/", views.signup, name="signup"),
     path("change-password/",views.change_password,name="Change Password"),
-    path("Logout/",views.user_logout,name="Logout"),
-    path("chatbot/",views.Chatbot,name="Chatbot"),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='loginpg.html'), name='login'),
     path("Bill-and-Payments/",views.Billing_dashboard,name="Billing Dashboard"),
     path("Loans/",views.loans,name="Loans"),
+path('accounts/', include('django.contrib.auth.urls')),
+path('logout/', auth_views.LogoutView.as_view(), name='Logout'),
 ]

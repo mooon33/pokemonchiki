@@ -4,13 +4,16 @@ from io import BytesIO
 import requests
 import base64
 import matplotlib
-
+from django.shortcuts import render, redirect
+from .forms import SignUpForm
+from django.contrib.auth import login
+from .models import User_reg
 from BankPortal import settings
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render , redirect
-from .models import Loan, User_reg , Transactions , Supports, BillPayment
+from .models import Loan, User_reg, Transactions, BillPayment, Supports
 from django.contrib.auth import login , logout , authenticate
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.csrf import csrf_exempt
@@ -25,18 +28,28 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfbase import pdfmetrics
 from datetime import datetime
 import json
-import google.generativeai as genai 
+
 from django.db.models import Sum  # Add this import
 
 def auth_user(user):
     return user.groups.filter(name='User').exists()
 # homepage 
 def homepage(request):
-    if request.user.is_anonymous: 
-        return render(request,'./homepage.html')
-    else:
-        user = User_reg.objects.get(user=request.user)
-        return render(request,'./homepage.html',{"User":user})
+    if request.user.is_anonymous:
+        return render(request, './homepage.html')
+
+    try:
+        user_profile = User_reg.objects.get(user=request.user)
+    except User_reg.DoesNotExist:
+        # Создаем базовый профиль, если его нет
+        user_profile = User_reg.objects.create(
+            user=request.user,
+            account_number="DEFAULT_ACC",  # Замените на логику генерации
+            phone="",
+            # остальные обязательные поля
+        )
+
+    return render(request, './homepage.html', {"User": user_profile})
 
 # User profile page
 def User_profile(request):
@@ -104,53 +117,14 @@ def loginpg(request):
 
 # customer support page
 def support(request):
-    """
-    The function `support` handles a POST request to submit a support request, create a support ticket
-    in the database, generate a polite and professional response using a GenerativeModel, and send an
-    HTML email response to the customer.
-    
-    :param request: The code snippet you provided is a Django view function that handles a POST request
-    for submitting a support request. It captures the user's name, email, and issue from the request,
-    saves the support request to the database using a model called Supports, and then generates a
-    response to the user's issue using
-    :return: The code snippet provided is a view function in Django that handles a POST request for
-    submitting a support request. If the request method is POST, it retrieves the name, email, and issue
-    from the request, creates a new entry in the Supports model, generates a response using a
-    GenerativeModel, and sends an HTML email response to the customer.
-    """
-
     if request.method == 'POST':
-        Name = request.POST['name']
-        email = request.POST['email']
-        issue = request.POST['issue']
-        support = Supports.objects.create(name=Name,email=email,issue=issue)
-        support.save()
-        if Name and email and issue :
-            genai.configure(api_key="")
-            model = genai.GenerativeModel(
-                "gemini-1.5-flash", 
-                system_instruction=f"""
-                You are a Customer Service agent at CHD-BANK. 
-                Reply to {Name}'s issue in a polite and professional manner. 
-                Format your response as a HTML email with a branded CHD-BANK template.
-                this is bank logo https://clipartcraft.com/images/bank-logo-icon-9.png .
-                this is the customer care number xxxxxxxxx.
-                Note : just generate the HTML response and send it to the customer and don't generate anything else in the response .
-                """
-                )
-            reply = model.generate_content(issue)
-            try :
-                email_message = EmailMessage(subject="Support Request",body=reply.text,from_email=settings.EMAIL_HOST_USER,to=[email,])
-                email_message.content_subtype = "html"  # Set email format to HTML
-                email_message.send()
-                messages.success(request,"Support request submitted successfully")
-            except BadHeaderError:
-                messages.error(request,"Invalid Header")
-                return redirect("support page")
-
-    return render(request,'./support.html')
-
-# Transaction page
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        issue = request.POST.get('issue')
+        Supports.objects.create(name=name, email=email, issue=issue)
+        messages.success(request, "Your support request has been submitted!")
+        return redirect('support')
+    return render(request, 'support.html')
 def transaction(request):
     '''The `transaction` function generates a bank statement PDF for a user within a specified date range,
     including transaction history and account information.
@@ -269,52 +243,31 @@ def transaction(request):
     return render(request,'./transaction.html',context)
 
 # Sign-up page
-def sign_up(request):
-    '''The `sign_up` function handles user registration by capturing user input, checking for existing
-    usernames, creating a new user account, and redirecting to the dashboard upon successful
-    registration.
-    
-    Parameters
-    ----------
-    request
-        The `request` parameter in the `sign_up` function is an object that represents the HTTP request
-    made by the user. It contains information such as the method used (GET or POST), data submitted
-    through forms, files uploaded, user session data, and more. In this context, the function is
-    
-    Returns
-    -------
-        The `sign_up` function returns either a redirect to the "Dashboard" page if the account creation is
-    successful, or a render of the "signup.html" template if the request method is not POST.
-    
-    '''
-
+def signup(request):
     if request.method == 'POST':
-        username = request.POST["username"]
-        Email = request.POST["email"]
-        password = request.POST['password']
-        ac_number = request.POST['account_number']
-        phone = request.POST['phone']
-        ac_type = request.POST['account-type']
-        gender = request.POST['Gender']
-        address = request.POST['address']
-        Photo = request.FILES['photo']
-        pan = request.POST['pan']
-        Aadhaar = request.POST['aadhaar']
-        dob = request.POST['dob']
-        
-        if User.objects.filter(username=username).exists():
-            messages.error(request,"Username exists")
-            return redirect("Sign-up")
-        else:
-                user = User.objects.create(username=username,password=password)
-                User_reg.objects.create(user=user,account_number=ac_number,phone=phone,email=Email,account_type=ac_type,gender=gender,image=Photo,address=address,Pan=pan,aadhaar=Aadhaar,DoB=dob)
-                login(request,user)
-                messages.success(request,"Your account was successfully created!!")
-                return redirect("Dashboard")
-    
-    return render(request,"./signup.html")
+        form = SignUpForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
 
-# DashBoard page
+            # Create User_reg profile
+            User_reg.objects.create(
+                user=user,
+                account_number=form.cleaned_data['account_number'],
+                phone=form.cleaned_data['phone'],
+                email=form.cleaned_data['email'],
+                account_type=form.cleaned_data['account_type'],
+                gender=form.cleaned_data['gender'],
+                address=form.cleaned_data['address'],
+                photo=form.cleaned_data['photo'],
+                pan=form.cleaned_data['pan'],
+                aadhaar=form.cleaned_data['aadhaar'],
+                dob=form.cleaned_data['dob']
+            )
+
+            login(request, user)
+            return redirect('Homepage')
+    else:
+        form = SignUpForm()
 @user_passes_test(auth_user)
 def dashboard(request):
     '''The `dashboard` function in Python checks if a user is logged in, retrieves transaction data,
@@ -643,48 +596,7 @@ def handler404(request,exception):
     '''
     return render(request,'./404.html')
 
-@csrf_exempt
-def Chatbot(request):
-    """
-    The `Chatbot` function processes user requests and generates replies using a generative model for a
-    bank chatbot in a web application.
-    
-    :param request: The `request` parameter in the `Chatbot` function is used to handle incoming HTTP
-    requests. It allows the function to access information sent by the client, such as form data or JSON
-    payloads. In the provided code snippet, the function checks if the request method is POST and then
-    processes the user
-    """
-    """
-    The function Chatbot handles user requests, processes messages, and generates replies using a
-    generative model for a bank chatbot.
-    
-    :param request: The `request` parameter in the `Chatbot` function is used to handle incoming HTTP
-    requests. It is used to access information sent by the client, such as form data or JSON payloads.
-    In this code snippet, the function checks if the request method is POST and then processes the
-    user's message
-    :return: The code snippet you provided is a Python function named `Chatbot` that seems to be a view
-    function for handling requests in a web application.
-    """
-    services = [
-        "Transfer Funds",
-        "Deposit Funds",
-        "Withdraw Funds",
-        "Support",
-        "Transaction history download"
-    ]
-    context = {
-        "services": services,
-        "account openning": "name,phone,email,account_number,account_type,address,pan,aadhaar,dob",
-        "Account types" : ["Savings","Current","Business"]
-    }
-    if request.method == 'POST':
-        data = json.loads(request.body)
-        user_message = data['message']
-        print(user_message)
-        genai.configure(api_key="")
-        model = genai.GenerativeModel("gemini-1.5-flash", system_instruction=f"You are a Bank Manager at CHD-BANK, and you are talking to a customer who wants to know about the bank and its services. these are some things you can keep in mind {context}")
-        reply = model.generate_content(user_message)
-        return JsonResponse({'reply': reply.text})
+
 
 def Billing_dashboard(request):
     """

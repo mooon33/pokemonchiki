@@ -539,7 +539,7 @@
         <a href="{% url 'transaction page' %}" class="{% if request.resolver_match.url_name == 'transaction page' %}active{% endif %}">
             <i class="fas fa-exchange-alt"></i> <span>Transactions</span>
         </a>
-        <a href="{% url 'support page' %}" class="{% if request.resolver_match.url_name == 'support page' %}active{% endif %}">
+        <a href="{% url 'support' %}" class="{% if request.resolver_match.url_name == 'support' %}active{% endif %}">
             <i class="fas fa-headset"></i> <span>Support</span>
         </a>
         <a href="{% url 'Billing Dashboard' %}" class="{% if request.resolver_match.url_name == 'Billing Dashboard' %}active{% endif %}">

@@ -7,34 +7,42 @@ from django.utils import timezone
 # User Model
 # This class defines a model for user registration with various fields such as phone number, account
 # number, email, gender, account type, balance, address, image, PAN, Aadhaar, and date of birth.
-class User_reg(models.Model):
+from django.db import models
+from django.contrib.auth.models import User
 
-    user_type = [
-        ('User', 'User'),
-        ('Manager', 'Manager'),
-        ('Admin', 'Admin'),
+from django.db import models
+from django.contrib.auth.models import User
+from django.utils import timezone
+
+
+class User_reg(models.Model):
+    ACCOUNT_TYPES = [
+        ('savings', 'Savings'),
+        ('checking', 'Checking'),
+        ('business', 'Business'),
     ]
 
-    user = models.OneToOneField(User,on_delete=models.CASCADE)
-    phone = models.IntegerField(default=0)
-    account_number = models.CharField(max_length=20,unique=True)
-    email = models.EmailField(max_length=30)
-    gender = models.CharField(max_length=20)
-    account_type = models.CharField(max_length=40)
-    balance = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
-    address = models.CharField(max_length=500,default="")
-    image = models.ImageField(upload_to="User/Images",default="",null=True)
-    Pan = models.CharField(max_length=50,default="")
-    aadhaar = models.CharField(max_length=50,default="")
-    DoB = models.CharField(max_length=20,default="")
-    Role = models.CharField(max_length=100,default="User",choices=user_type)
+    GENDER_CHOICES = [
+        ('Male', 'Male'),
+        ('Female', 'Female'),
+        ('Others', 'Others'),
+    ]
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    account_number = models.CharField(max_length=20, unique=True)
+    phone = models.CharField(max_length=15)
+    email = models.EmailField()
+    account_type = models.CharField(max_length=10, choices=ACCOUNT_TYPES)
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES)
+    address = models.CharField(max_length=200)
+    photo = models.ImageField(upload_to='user_photos/', null=True, blank=True)
+    pan = models.CharField(max_length=20)
+    aadhaar = models.CharField(max_length=20)
+    dob = models.DateField()
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return self.user.username
-
-# Transaction Model    
-# This Python class defines a model for transactions with fields like user, transaction type,
-# timestamp, amount, about, recipient, and recipient number.
+        return f"{self.user.username} - {self.account_number}"
 class Transactions(models.Model):
     TRANSACTION_TYPES = [
         ('DEPOSIT', 'Deposit'),
