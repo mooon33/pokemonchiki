@@ -193,66 +193,66 @@
 <body>
     <div class="container">
         <button class="back-button" onclick="location.href='{% url 'Billing Dashboard' %}'">
-            <i class="fas fa-arrow-left"></i> Back to Dashboard
+            <i class="fas fa-arrow-left"></i> Назад в панель управления
         </button>
-        <h2>Loan Application</h2>
+        <h2>Заявка на кредит</h2>
         <form id="loanForm" method="POST">
             {% csrf_token %}
             <div class="form-group">
-                <label for="name"><i class="fas fa-user"></i> Full Name</label>
-                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                <label for="name"><i class="fas fa-user"></i> Полное имя</label>
+                <input type="text" id="name" name="name" required placeholder="Введите ваше полное имя">
             </div>
             
             <div class="form-group">
-                <label for="amount"><i class="fas fa-rupee-sign"></i> Loan Amount</label>
-                <input type="number" id="amount" name="amount" required placeholder="Enter loan amount">
+                <label for="amount"><i class="fas fa-rupee-sign"></i> Сумма кредита</label>
+                <input type="number" id="amount" name="amount" required placeholder="Введите сумму кредита">
             </div>
             
             <div class="form-group">
-                <label for="tenure"><i class="fas fa-calendar"></i> Loan Tenure (in years)</label>
+                <label for="tenure"><i class="fas fa-calendar"></i> Срок кредита (в годах)</label>
                 <select id="tenure" name="tenure">
-                    <option value="" disabled selected>Select loan tenure</option>
-                    <option value="1">1 Year</option>
-                    <option value="2">2 Years</option>
-                    <option value="3">3 Years</option>
-                    <option value="5">5 Years</option>
-                    <option value="5">10 Years</option>
+                    <option value="" disabled selected>Выберите срок кредита</option>
+                    <option value="1">1 год</option>
+                    <option value="2">2 года</option>
+                    <option value="3">3 года</option>
+                    <option value="5">5 лет</option>
+                    <option value="5">10 лет</option>
                 </select>
             </div>
             
             <div class="form-group">
-                <label for="income"><i class="fas fa-money-bill-wave"></i> Annual Income</label>
-                <input type="number" id="income" name="income" required placeholder="Enter annual income">
+                <label for="income"><i class="fas fa-money-bill-wave"></i> Годовой доход</label>
+                <input type="number" id="income" name="income" required placeholder="Введите годовой доход">
             </div>
             
             <div class="form-group">
-                <label for="employment"><i class="fas fa-briefcase"></i> Employment Type</label>
+                <label for="employment"><i class="fas fa-briefcase"></i> Тип занятости</label>
                 <select id="employment" name="employment">
-                    <option value="" disabled selected>Select employment type</option>
-                    <option value="salaried">Salaried</option>
-                    <option value="self-employed">Self-Employed</option>
+                    <option value="" disabled selected>Выберите тип занятости</option>
+                    <option value="salaried">Наёмный работник</option>
+                    <option value="self-employed">Самозанятый</option>
                 </select>
             </div>
             
             <div class="form-group">
-                <label for="purpose"><i class="fas fa-info-circle"></i> Loan Purpose</label>
+                <label for="purpose"><i class="fas fa-info-circle"></i> Цель кредита</label>
                 <select id="purpose" name="purpose" required>
-                    <option value="" disabled selected>Select loan purpose</option>
-                    <option value="home">Home Purchase/Renovation</option>
-                    <option value="education">Education</option>
-                    <option value="business">Business Expansion</option>
-                    <option value="vehicle">Vehicle Purchase</option>
-                    <option value="medical">Medical Expenses</option>
-                    <option value="debt">Debt Consolidation</option>
-                    <option value="wedding">Wedding Expenses</option>
-                    <option value="other">Other</option>
+                    <option value="" disabled selected>Выберите цель кредита</option>
+                    <option value="home">Покупка/ремонт жилья</option>
+                    <option value="education">Образование</option>
+                    <option value="business">Развитие бизнеса</option>
+                    <option value="vehicle">Покупка транспортного средства</option>
+                    <option value="medical">Медицинские расходы</option>
+                    <option value="debt">Рефинансирование долгов</option>
+                    <option value="wedding">Свадебные расходы</option>
+                    <option value="other">Другое</option>
                 </select>
             </div>
 
-            <button type="submit"><i class="fas fa-paper-plane"></i> Apply Now</button>
+            <button type="submit"><i class="fas fa-paper-plane"></i> Подать заявку</button>
         </form>
         <div id="successMessage" class="success-message">
-            Application submitted successfully! We'll contact you soon.
+            Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.
         </div>
     </div>
 

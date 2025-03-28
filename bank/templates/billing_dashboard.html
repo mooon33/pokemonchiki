@@ -675,35 +675,35 @@
     </div>
     <div class="sidebar hidden" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://clipartcraft.com/images/bank-logo-icon-9.png" alt="CHD-BANK Logo">
+            <img src="https://clipartcraft.com/images/bank-logo-icon-9.png" alt="Логотип CHD-BANK">
             <span>CHD Bank</span>
         </div>
         <a href="{% url 'Homepage' %}" class="{% if request.resolver_match.url_name == 'Homepage' %}active{% endif %}">
-            <i class="fas fa-home"></i> <span>Home</span>
+            <i class="fas fa-home"></i> <span>Главная</span>
         </a>
         <a href="{% url 'Dashboard' %}" class="{% if request.resolver_match.url_name == 'Dashboard' %}active{% endif %}">
-            <i class="fas fa-th-large"></i> <span>Dashboard</span>
+            <i class="fas fa-th-large"></i> <span>Панель управления</span>
         </a>
         <a href="{% url 'User' %}" class="{% if request.resolver_match.url_name == 'User' %}active{% endif %}">
-            <i class="fas fa-user"></i> <span>Profile</span>
+            <i class="fas fa-user"></i> <span>Профиль</span>
         </a>
         <a href="{% url 'transaction page' %}" class="{% if request.resolver_match.url_name == 'transaction page' %}active{% endif %}">
-            <i class="fas fa-exchange-alt"></i> <span>Transactions</span>
+            <i class="fas fa-exchange-alt"></i> <span>Транзакции</span>
         </a>
         <a href="{% url 'support page' %}" class="{% if request.resolver_match.url_name == 'support page' %}active{% endif %}">
-            <i class="fas fa-headset"></i> <span>Support</span>
+            <i class="fas fa-headset"></i> <span>Поддержка</span>
         </a>
         <a href="{% url 'Billing Dashboard' %}" class="{% if request.resolver_match.url_name == 'Billing Dashboard' %}active{% endif %}">
-            <i class="fas fa-file-invoice"></i> <span>Bill Payments</span>
+            <i class="fas fa-file-invoice"></i> <span>Оплата счетов</span>
         </a>
         <div class="button-group">
             <button id="settingsButton">
                 <i class="fas fa-cogs"></i>
-                <span>Settings</span>
+                <span>Настройки</span>
             </button>
             <button id="logoutButton" onclick="location.href='{% url 'Logout' %}'">
                 <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
+                <span>Выйти</span>
             </button>
         </div>
     </div>
@@ -711,56 +711,56 @@
         <div class="hamburger"></div>
     </button>
     <div class="dashboard-header">
-        <h2>Bill Payment Dashboard</h2>
+        <h2>Панель оплаты счетов</h2>
     </div>
 
     <div class="container">
         <div class="box main-dashboard">
             <div class="dashboard-grid">
-                <!-- Balance Overview Section -->
+                <!-- Раздел обзора баланса -->
                 <div class="dashboard-section balance-section">
-                    <h3><i class="fas fa-wallet"></i> Balance Overview</h3>
+                    <h3><i class="fas fa-wallet"></i> Обзор баланса</h3>
                     <div class="balance-info">
                         <div class="balance-card">
-                            <span class="balance-label">Current Balance</span>
+                            <span class="balance-label">Текущий баланс</span>
                             <span class="balance-amount">₹{{ User.balance }}</span>
                         </div>
                         <div class="balance-card">
-                            <span class="balance-label">Monthly Bill Spending</span>
+                            <span class="balance-label">Ежемесячные расходы</span>
                             <span class="balance-amount">₹{{ total_monthly_spending }}</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Bill Payment Form Section -->
+                <!-- Раздел формы оплаты счетов -->
                 <div class="dashboard-section payment-section">
-                    <h3><i class="fas fa-file-invoice"></i> Quick Bill Payment</h3>
+                    <h3><i class="fas fa-file-invoice"></i> Быстрая оплата</h3>
                     <form method="POST" class="bill-payment-form">
                         {% csrf_token %}
                         <div class="form-group">
-                            <label for="billType">Bill Type</label>
+                            <label for="billType">Тип счета</label>
                             <select id="billType" name="billType" required>
-                                <option value="Electricity">Electricity</option>
-                                <option value="Water">Water</option>
-                                <option value="Internet">Internet</option>
-                                <option value="Rent">Rent</option>
+                                <option value="Electricity">Электричество</option>
+                                <option value="Water">Вода</option>
+                                <option value="Internet">Интернет</option>
+                                <option value="Rent">Аренда</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="amount">Amount</label>
-                            <input type="number" id="amount" name="amount" required placeholder="Enter amount">
+                            <label for="amount">Сумма</label>
+                            <input type="number" id="amount" name="amount" required placeholder="Введите сумму">
                         </div>
                         <div class="form-group">
-                            <label for="Bill_no">Bill Number</label>
-                            <input type="number" id="Bill_no" name="Bill_no" required placeholder="Bill Number">
+                            <label for="Bill_no">Номер счета</label>
+                            <input type="number" id="Bill_no" name="Bill_no" required placeholder="Номер счета">
                         </div>
-                        <button type="submit"><i class="fas fa-check"></i> Pay Bill</button>
+                        <button type="submit"><i class="fas fa-check"></i> Оплатить</button>
                     </form>
                 </div>
 
-                <!-- Recent Transactions Section -->
+                <!-- Раздел последних транзакций -->
                 <div class="dashboard-section transactions-section">
-                    <h3><i class="fas fa-history"></i> Recent Bills</h3>
+                    <h3><i class="fas fa-history"></i> Последние счета</h3>
                     <ul class="ongoing-payments">
                         {% for Bill in Bills %}
                         <li class="transaction-item">
@@ -771,25 +771,25 @@
                             <strong class="transaction-amount">₹{{ Bill.amount }}</strong>
                         </li>
                         {% empty %}
-                        <li class="no-transactions">No ongoing payments</li>
+                        <li class="no-transactions">Нет текущих платежей</li>
                         {% endfor %}
                     </ul>
                 </div>
 
-                <!-- Spending Chart Section -->
+                <!-- Раздел анализа расходов -->
                 <div class="dashboard-section chart-section">
                     <div class="chart-loan-grid">
-                        <!-- Left side - Chart -->
+                        <!-- Левая часть - График -->
                         <div class="chart-container-wrapper">
-                            <h3><i class="fas fa-chart-pie"></i> Spending Analysis</h3>
+                            <h3><i class="fas fa-chart-pie"></i> Анализ расходов</h3>
                             <div class="chart-container">
                                 <canvas id="spendingChart"></canvas>
                             </div>
                         </div>
                         
-                        <!-- Right side - Loan Status -->
+                        <!-- Правая часть - Статус кредитов -->
                         <div class="loan-status-wrapper">
-                            <h3><i class="fas fa-money-check-alt"></i> Loan Status</h3>
+                            <h3><i class="fas fa-money-check-alt"></i> Статус кредитов</h3>
                             <div class="loan-list">
                                 {% if loans %}
                                     {% for loan in loans %}
@@ -802,11 +802,11 @@
                                     </div>
                                     {% endfor %}
                                 {% else %}
-                                    <p class="no-loans">No active loan applications</p>
+                                    <p class="no-loans">Нет активных заявок на кредит</p>
                                 {% endif %}
                             </div>
                             <button onclick="location.href='{% url 'Loans' %}'" class="apply-loan-btn">
-                                <i class="fas fa-plus"></i> Apply for Loan
+                                <i class="fas fa-plus"></i> Оформить кредит
                             </button>
                         </div>
                     </div>
@@ -814,7 +814,6 @@
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 

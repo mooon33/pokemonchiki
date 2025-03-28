@@ -468,35 +468,35 @@
 
     <div class="sidebar hidden" id="sidebar">
         <div class="sidebar-header">
-            <img src="https://clipartcraft.com/images/bank-logo-icon-9.png" alt="CHD-BANK Logo">
-            <span>CHD Bank</span>
+            <img src="https://clipartcraft.com/images/bank-logo-icon-9.png" alt="Логотип CHD-BANK">
+            <span>CHD Банк</span>
         </div>
         <a href="#" class="active">
-            <i class="fas fa-tachometer-alt"></i> <span>Manager Dashboard</span>
+            <i class="fas fa-tachometer-alt"></i> <span>Панель управления</span>
         </a>
         <a href="#">
-            <i class="fas fa-money-bill-wave"></i> <span>Loan Management</span>
+            <i class="fas fa-money-bill-wave"></i> <span>Управление кредитами</span>
         </a>
         <a href="#">
-            <i class="fas fa-exchange-alt"></i> <span>Transactions</span>
+            <i class="fas fa-exchange-alt"></i> <span>Транзакции</span>
         </a>
         <a href="#">
-            <i class="fas fa-users"></i> <span>Customer Management</span>
+            <i class="fas fa-users"></i> <span>Управление клиентами</span>
         </a>
         <a href="#">
-            <i class="fas fa-file-alt"></i> <span>Reports</span>
+            <i class="fas fa-file-alt"></i> <span>Отчеты</span>
         </a>
         <a href="#">
-            <i class="fas fa-shield-alt"></i> <span>Security & Logs</span>
+            <i class="fas fa-shield-alt"></i> <span>Безопасность и логи</span>
         </a>
         <div class="button-group">
             <button id="settingsButton">
                 <i class="fas fa-cogs"></i>
-                <span>Settings</span>
+                <span>Настройки</span>
             </button>
-            <button id="logoutButton"  onclick="window.location.href='{% url 'logout' %}'">
+            <button id="logoutButton" onclick="window.location.href='{% url 'logout' %}'">
                 <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
+                <span>Выход</span>
             </button>
         </div>
     </div>
@@ -506,63 +506,63 @@
     </button>
 
     <div class="dashboard-container">
-        <h2>Manager Dashboard</h2>
+        <h2>Панель управления менеджера</h2>
 
         <div class="dashboard-summary">
             <div class="summary-card pending">
-                <h3>Pending Loans</h3>
+                <h3>Ожидающие кредиты</h3>
                 <div class="value">{{ total_loans }}</div>
             </div>
             <div class="summary-card approved">
-                <h3>Today's Transactions</h3>
+                <h3>Сегодняшние транзакции</h3>
                 <div class="value">{{ total_transactions }}</div>
             </div>
             <div class="summary-card alert">
-                <h3>Security Alerts</h3>
+                <h3>Оповещения безопасности</h3>
                 <div class="value">3</div>
             </div>
         </div>
 
         <ul class="nav nav-tabs" id="managerTabs" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="loans-tab" data-bs-toggle="tab" data-bs-target="#loans" type="button" role="tab">Loan Approval</button>
+                <button class="nav-link active" id="loans-tab" data-bs-toggle="tab" data-bs-target="#loans" type="button" role="tab">Одобрение кредитов</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="transactions-tab" data-bs-toggle="tab" data-bs-target="#transactions" type="button" role="tab">Transactions</button>
+                <button class="nav-link" id="transactions-tab" data-bs-toggle="tab" data-bs-target="#transactions" type="button" role="tab">Транзакции</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="logs-tab" data-bs-toggle="tab" data-bs-target="#logs" type="button" role="tab">Security Logs</button>
+                <button class="nav-link" id="logs-tab" data-bs-toggle="tab" data-bs-target="#logs" type="button" role="tab">Логи безопасности</button>
             </li>
         </ul>
 
         <div class="tab-content" id="managerTabContent">
-            <!-- Loan Approval Tab -->
+            <!-- Вкладка одобрения кредитов -->
             <div class="tab-pane fade show active" id="loans" role="tabpanel">
                 <div class="search-bar">
                     <input type="text" 
-                           placeholder="Search loans by account number, customer, type, amount or status..." 
-                           aria-label="Search loans">
+                           placeholder="Поиск кредитов по номеру счета, клиенту, типу, сумме или статусу..." 
+                           aria-label="Поиск кредитов">
                 </div>
                 
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Pending Loan Applications</span>
+                        <span>Ожидающие заявки на кредит</span>
                         <div>
-                            <button class="btn btn-sm btn-outline-primary">Export</button>
-                            <button class="btn btn-sm btn-outline-secondary">Filter</button>
+                            <button class="btn btn-sm btn-outline-primary">Экспорт</button>
+                            <button class="btn btn-sm btn-outline-secondary">Фильтр</button>
                         </div>
                     </div>
                     <div class="card-body p-0">
                         <table class="table mb-0">
                             <thead>
                                 <tr>
-                                    <th>Application ID</th>
-                                    <th>Customer</th>
-                                    <th>Loan Type</th>
-                                    <th>Amount</th>
-                                    <th>Date</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>ID заявки</th>
+                                    <th>Клиент</th>
+                                    <th>Тип кредита</th>
+                                    <th>Сумма</th>
+                                    <th>Дата</th>
+                                    <th>Статус</th>
+                                    <th>Действие</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -576,7 +576,7 @@
                                     <td>{{ loan.user.user.username }}</td>
                                     <td>{{ loan.loan_type }}</td>
                                     <td>{{loan.loan_amount}}</td>
-                                    <td>{{ loan.timestamp }}/td>
+                                    <td>{{ loan.timestamp }}</td>
                                     <td><span class="badge 
                                         {% if loan.loan_status == 'PENDING' %}badge-pending
                                         {% elif loan.loan_status == 'APPROVED' %}badge-approved
@@ -588,54 +588,53 @@
                                         <form method="POST" action="{% url 'loan_approve' loan.id %}" class="d-inline">
                                             {% csrf_token %}
                                             {% if loan.loan_status == "APPROVED" or loan.loan_status == "REJECTED"%}
-                                                <button type="submit" class="btn btn-sm btn-success" disabled>Action Taken</button>
+                                                <button type="submit" class="btn btn-sm btn-success" disabled>Действие выполнено</button>
                                             {% else %}
-                                                <button type="submit" class="btn btn-sm btn-success">Approve</button>
+                                                <button type="submit" class="btn btn-sm btn-success">Одобрить</button>
                                             {% endif %}
                                         </form>
                                         <form method="POST" action="{% url 'loan_reject' loan.id %}" class="d-inline">
                                             {% csrf_token %}
                                             {% if loan.loan_status == "REJECTED" or loan.loan_status == "APPROVED" %}
-                                                <button type="submit" class="btn btn-sm btn-danger" disabled>Action Taken</button>
+                                                <button type="submit" class="btn btn-sm btn-danger" disabled>Действие выполнено</button>
                                             {% else %}
-                                                <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                                                <button type="submit" class="btn btn-sm btn-danger">Отклонить</button>
                                             {% endif %}
                                         </form> 
                                     </td>
                                 </tr>
                                 {% endfor %}
-                                
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Transactions Tab -->
+            <!-- Вкладка транзакций -->
             <div class="tab-pane fade" id="transactions" role="tabpanel">
                 <div class="search-bar">
-                    <input type="text" placeholder="Search transactions by account number, amount or date...">
+                    <input type="text" placeholder="Поиск транзакций по номеру счета, сумме или дате...">
                 </div>
                 
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Recent Transactions</span>
+                        <span>Последние транзакции</span>
                         <div>
-                            <button class="btn btn-sm btn-outline-primary">Export</button>
-                            <button class="btn btn-sm btn-outline-secondary">Filter</button>
+                            <button class="btn btn-sm btn-outline-primary">Экспорт</button>
+                            <button class="btn btn-sm btn-outline-secondary">Фильтр</button>
                         </div>
                     </div>
                     <div class="card-body p-0">
                         <table class="table mb-0">
                             <thead>
                                 <tr>
-                                    <th>Transaction ID</th>
-                                    <th>Account</th>
-                                    <th>Type</th>
-                                    <th>Amount</th>
-                                    <th>Date & Time</th>
-                                    <th>Status</th>
-                                    <th>Tran</th>
+                                    <th>ID транзакции</th>
+                                    <th>Счет</th>
+                                    <th>Тип</th>
+                                    <th>Сумма</th>
+                                    <th>Дата и время</th>
+                                    <th>Статус</th>
+                                    <th>Детали</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -646,108 +645,105 @@
                                     <td>{{ transaction.transaction_type }}</td>
                                     <td>{{ transaction.amount }}</td>
                                     <td>{{ transaction.timestamp }}</td>
-                                    <td><span class="badge bg-success">Completed</span></td>
+                                    <td><span class="badge bg-success">Завершено</span></td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">Details</button>
+                                        <button class="btn btn-sm btn-primary">Подробнее</button>
                                     </td>
                                 </tr>
                                 {% endfor %}
-                                
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Security Logs Tab -->
+            <!-- Вкладка логов безопасности -->
             <div class="tab-pane fade" id="logs" role="tabpanel">
                 <div class="search-bar">
-                    <input type="text" placeholder="Search logs by user, action or date...">
+                    <input type="text" placeholder="Поиск логов по пользователю, действию или дате...">
                 </div>
                 
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>System Logs</span>
+                        <span>Системные логи</span>
                         <div>
-                            <button class="btn btn-sm btn-outline-primary">Export</button>
-                            <button class="btn btn-sm btn-outline-secondary">Filter</button>
+                            <button class="btn btn-sm btn-outline-primary">Экспорт</button>
+                            <button class="btn btn-sm btn-outline-secondary">Фильтр</button>
                         </div>
                     </div>
                     <div class="card-body p-0">
                         <table class="table mb-0">
                             <thead>
                                 <tr>
-                                    <th>Log ID</th>
-                                    <th>User</th>
-                                    <th>Action</th>
-                                    <th>IP Address</th>
-                                    <th>Date & Time</th>
-                                    <th>Status</th>
-                                    <th>Details</th>
+                                    <th>ID лога</th>
+                                    <th>Пользователь</th>
+                                    <th>Действие</th>
+                                    <th>IP-адрес</th>
+                                    <th>Дата и время</th>
+                                    <th>Статус</th>
+                                    <th>Детали</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>LOG39845</td>
                                     <td>admin@chdbank.com</td>
-                                    <td>User Login</td>
+                                    <td>Вход пользователя</td>
                                     <td>192.168.1.105</td>
-                                    <td>01 Mar 2025, 09:55 AM</td>
-                                    <td><span class="badge bg-success">Success</span></td>
+                                    <td>01 мар 2025, 09:55</td>
+                                    <td><span class="badge bg-success">Успешно</span></td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">View</button>
+                                        <button class="btn btn-sm btn-primary">Просмотр</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>LOG39844</td>
                                     <td>rohit.sharma@gmail.com</td>
-                                    <td>Loan Application</td>
+                                    <td>Заявка на кредит</td>
                                     <td>103.25.42.156</td>
-                                    <td>01 Mar 2025, 09:40 AM</td>
-                                    <td><span class="badge bg-success">Success</span></td>
+                                    <td>01 мар 2025, 09:40</td>
+                                    <td><span class="badge bg-success">Успешно</span></td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">View</button>
+                                        <button class="btn btn-sm btn-primary">Просмотр</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>LOG39843</td>
                                     <td>priya.patel@yahoo.com</td>
-                                    <td>User Login</td>
+                                    <td>Вход пользователя</td>
                                     <td>45.126.18.201</td>
-                                    <td>01 Mar 2025, 09:25 AM</td>
-                                    <td><span class="badge bg-success">Success</span></td>
+                                    <td>01 мар 2025, 09:25</td>
+                                    <td><span class="badge bg-success">Успешно</span></td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">View</button>
+                                        <button class="btn btn-sm btn-primary">Просмотр</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>LOG39842</td>
-                                    <td>unknown</td>
-                                    <td>Failed Login</td>
+                                    <td>неизвестно</td>
+                                    <td>Неудачный вход</td>
                                     <td>185.93.45.12</td>
-                                    <td>01 Mar 2025, 09:20 AM</td>
-                                    <td><span class="badge bg-danger">Failure</span></td>
+                                    <td>01 мар 2025, 09:20</td>
+                                    <td><span class="badge bg-danger">Ошибка</span></td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">View</button>
+                                        <button class="btn btn-sm btn-primary">Просмотр</button>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>LOG39841</td>
-                                    <td>system</td>
-                                    <td>Database Backup</td>
-                                    <td>Internal</td>
-                                    <td>01 Mar 2025, 09:00 AM</td>
-                                    <td><span class="badge bg-success">Success</span></td>
+                                    <td>система</td>
+                                    <td>Резервное копирование БД</td>
+                                    <td>Внутренний</td>
+                                    <td>01 мар 2025, 09:00</td>
+                                    <td><span class="badge bg-success">Успешно</span></td>
                                     <td>
-                                        <button class="btn btn-sm btn-primary">View</button>
+                                        <button class="btn btn-sm btn-primary">Просмотр</button>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                
-                
             </div>
         </div>
     </div>
