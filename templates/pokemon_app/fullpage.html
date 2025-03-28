@@ -29,11 +29,11 @@
                 <div class="menu-bar">
                     <ul class="menu-links">
                         <li class="nav-links">
-                            <a href="#">
+                            <a href="fullpage">
                                 <i class="icon-home"></i>
                                 <h5 class="text-start animated-element">Главная</h5>
                             </a>
-                            <a href="#">
+                            <a href="types">
                                 <i class="icon-types"></i>
                                 <h5 class="text-start animated-element">Типы покемонов</h5>
                             </a>
@@ -88,6 +88,7 @@
             </div>
         </div>
     </header>
+
    <section class="about" id="about">
         <div class="container">
             <div class="row">
@@ -202,9 +203,47 @@
             <div class="video-bg">
                 <video src="{% static 'img/lava_bg.mp4' %}" type="video/mp4" autoplay muted loop></video>
             </div>
+            <div class="col-12">
+                <div class="footer-content">
+                    <div class="footer-logo animated-element">
+                        <img src="{% static 'img/logo.png' %}" alt="Pokemon Database Logo">
+                        <h3>Pokemon Database</h3>
+                    </div>
+                    <div class="footer-links">
+                        <div class="footer-column animated-element">
+                            <h4>Навигация</h4>
+                            <ul>
+                                <li><a href="fullpage">Главная</a></li>
+                                <li><a href="types">Типы покемонов</a></li>
+                                <li><a href="#">Ваша команда</a></li>
+                                <li><a href="#">О нас</a></li>
+                            </ul>
+                        </div>
+                        <div class="footer-column animated-element">
+                            <h4>Контакты</h4>
+                            <ul>
+                                <li><i class="icon-mail"></i> contact@pokemondb.com</li>
+                                <li><i class="icon-phone"></i> +7 (123) 456-78-90</li>
+                                <li><i class="icon-location"></i> г. Паллет, регион Канто</li>
+                            </ul>
+                        </div>
+                        <div class="footer-column">
+                            <h4>Социальные сети</h4>
+                            <div class="social-icons animated-element">
+                                <a href="#" ><i class="icon-twitter"></i></a>
+                                <a href="#"><i class="icon-instagram"></i></a>
+                                <a href="#"><i class="icon-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p class="animated-element">&copy; 2025 Pokemon Database. Все права защищены.</p>
+                </div>
+            </div>
         </div>
     </div>
-   </footer>
+    </footer>
 
     <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

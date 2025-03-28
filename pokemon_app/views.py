@@ -9,6 +9,11 @@ from django.shortcuts import render
 def fullpage_view(request):
     return render(request, 'pokemon_app/fullpage.html')
 
+def types_view(request):
+    return render(request, 'pokemon_app/types.html')
+    return redirect('fullpage')  # Редирект на главную
+
+
 def register_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
