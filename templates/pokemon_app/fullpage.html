@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcun icon" href="{% static 'img/favicon.ico' %}" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontello.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Pokemon Database</title>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="video-bg">
+                    <video src="{% static 'img/menu-video-bg.mp4' %}" type="video/mp4" autoplay muted loop></video>
+                </div>
+                <div class="my_square">
+                    <i class="icon-menu toggle"></i>
+                </div>
+                <div class="nav-image-text">
+                    <h3 class="text-center text-uppercase animated-element">Pokemon Database</h3>
+                    <img src="{% static 'img/logo.png' %}" class="animated-element" alt="logo-img">
+                </div>
+            </div>
+            <div class="row">
+                <div class="menu-bar">
+                    <ul class="menu-links">
+                        <li class="nav-links">
+                            <a href="#">
+                                <i class="icon-home"></i>
+                                <h5 class="text-start animated-element">Главная</h5>
+                            </a>
+                            <a href="#">
+                                <i class="icon-types"></i>
+                                <h5 class="text-start animated-element">Типы покемонов</h5>
+                            </a>
+                            <a href="#">
+                                <i class="icon-team"></i>
+                                <h5 class="text-start animated-element">Ваша команда</h5>
+                            </a>
+                            <a href="#">
+                                <i class="icon-survey"></i>
+                                <h5 class="text-start animated-element">Пройти опрос</h5>
+                            </a>
+                            <a href="#">
+                                <i class="icon-about"></i>
+                                <h5 class="text-start animated-element">О нас</h5>
+                            </a>
+                            <a href="#">
+                                <i class="icon-survey"></i>
+                                <h5 class="text-start animated-element">Пройти опрос</h5>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <div class="bottom-menu">
+                        <div class="bottom-content">
+                            <li class="">
+                                <a href="#">
+                                    <i class="icon-login"></i>
+                                    <h5 class="text-start animated-element">Войти</h5>
+                                </a>
+                            </li>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="video-bg">
+                        <video src="{% static 'img/lava_bg.mp4' %}" type="video/mp4" autoplay muted loop></video>
+                    </div>
+                    <div class="img-container">
+                        <img src="{% static 'img/left-bg-img1.png' %}" alt="left-bg-img" id="left-bg-img">
+                        <img src="{% static 'img/right-bg-img.png' %}" alt="right-bg-img" id="right-bg-img">
+                        <img src="{% static 'img/logo.png' %}" alt="Выплывающая картинка сверху" id="popup-image-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+   <section class="about" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="video-bg">
+                        <video src="{% static 'img/gradient_bg.mp4' %}" type="video/mp4" autoplay muted loop></video>
+                    </div>
+                    <h1 class="text-center text-uppercase color3 mb-5 animated-element">Что такое Pokemon Database?</h1>
+                </div>
+            </div>
+            <div class="row">
+                <h3 class="text-center mb-3 animated-element">Все, кто играл в игры серии Pokemon часто сталкиваются с проблемой запоминания оссобенностей типов покемонов и запоминания уже пойманных вами существ. Pokemon Database поможет вам решить данную проблему!</h3>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-evenly">
+                    <div class="card animated-element" style="width: 24rem;">
+                        <img src="{% static 'img/fire-img.png' %}" class="card-img-top" alt="fire-img">
+                        <div class="card-body">
+                          <h5 class="card-title">Типы покемонов</h5>
+                          <p class="card-text">Узнайте все обо всех типах покемонов, какие эффективны против одних, а какие могут иметь сопротивление против других.</p>
+                          <a href="#" class="btn">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-evenly">
+                    <div class="card animated-element" style="width: 24rem;">
+                        <img src="{% static 'img/pikachu-img.png' %}" class="card-img-top" alt="pikachu-img">
+                        <div class="card-body">
+                          <h5 class="card-title">Лист покемонов</h5>
+                          <p class="card-text">Посмотрите список всех существуюзих покемонов и определите каких вы уже имеете в своей коллекции, а каких вам еще предстоить поймать.</p>
+                          <a href="#" class="btn">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-6 col-sm-12 d-flex justify-content-evenly">
+                    <div class="card animated-element" style="width: 24rem;">
+                        <img src="{% static 'img/trainer-img.png' %}" class="card-img-top" alt="trainer-img">
+                        <div class="card-body">
+                          <h5 class="card-title">Ваша команда</h5>
+                          <p class="card-text">Зарегистрируйтесь и загляните в список уже пойманных вами покемонов.</p>
+                          <a href="#" class="btn">Перейти</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </section>
+   <section class="survey" id="survey">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="video-bg">
+                    <video src="{% static 'img/gradient_bg_flipped.mp4' %}" type="video/mp4" autoplay muted loop></video>
+                </div>
+                <h1 class="text-center text-uppercase color3 mb-5 animated-element">Пройдите небольшой опрос</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-8 col-sm-12 d-flex justify-content-evenly">
+                <form class="row g-3 animated-element">
+                    <div class="col-md-12">
+                        <label for="inputAge" class="form-label">Сколько вам лет?</label>
+                        <input type="text" class="form-control" id="inputAge" placeholder="Например, 18">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputPokemon" class="form-label">Какой ваш любимый покемон?</label>
+                        <input type="text" class="form-control" id="inputPokemon" placeholder="Например, Пикачу">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress2" class="form-label">Из какой вы страны?</label>
+                        <input type="text" class="form-control" id="inputAddress2" placeholder="Например, Россия">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputPokemonType" class="form-label">Какой ваш любимый тип покемонов?</label>
+                        <input type="text" class="form-control" id="inputPokemonType" placeholder="Например, огненный">
+                    </div>
+                    <div class="col-md-12">
+                        <label for="inputPokemonType" class="form-label">Какой ваш любимый тип покемонов?</label>
+                        <input type="text" class="form-control" id="inputPokemonType" placeholder="Например, огненный">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">Оцените наш сайт от 1 до 10</label>
+                        <select id="inputState" class="form-select">
+                            <option selected>Выберите...</option>
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                            <option>10</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn">Войти в систему</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-xl-4 col-sm-12">
+                <h2 class="text-start mb-3 animated-element">Это поможет нам лучше узнать нашу аудиторию!</h3>
+                <img src="{% static 'img/charmander-img.png' %}" class="animated-element" alt="charmander-img">
+            </div>
+        </div>
+    </div>
+   </section>
+   <footer>
+    <div class="container">
+        <div class="row">
+            <div class="video-bg">
+                <video src="{% static 'img/lava_bg.mp4' %}" type="video/mp4" autoplay muted loop></video>
+            </div>
+        </div>
+    </div>
+   </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
