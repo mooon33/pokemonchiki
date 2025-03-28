@@ -61,7 +61,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -89,6 +89,7 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 

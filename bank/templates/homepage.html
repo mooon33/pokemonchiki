@@ -446,9 +446,15 @@
             <nav>
                 <img src="https://clipartcraft.com/images/bank-logo-icon-9.png" alt="логотип">
                 <ul>
+<<<<<<< HEAD
                     <li><a href="#">Главная</a></li>
                     <li><a href="#services">Услуги</a></li>
                     <li><a href="{% url 'support page' %}">Контакты</a></li>
+=======
+                    <li><a href="{% url 'Homepage' %}">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="{% url 'support' %}">Contact</a></li>
+>>>>>>> aboba
                     {% if user.is_authenticated %}
                         {% if User.Role == "Manager" %}
                         <li><a href="{% url 'Manager' %}">Панель менеджера</a></li>
@@ -483,7 +489,11 @@
                     <a href="{% url 'Dashboard' %}" class="btn">Личный кабинет</a>
                 {% endif %}
             {% else %}
+<<<<<<< HEAD
                 <a href="{% url 'Sign-up' %}" class="btn">Начать</a>
+=======
+                <a href="{% url 'signup' %}" class="btn">Get Started</a>
+>>>>>>> aboba
             {% endif %}
         </div>
     </section>

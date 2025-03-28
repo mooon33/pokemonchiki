@@ -539,8 +539,13 @@
         <a href="{% url 'transaction page' %}" class="{% if request.resolver_match.url_name == 'transaction page' %}active{% endif %}">
             <i class="fas fa-exchange-alt"></i> <span>Транзакции</span>
         </a>
+<<<<<<< HEAD
         <a href="{% url 'support page' %}" class="{% if request.resolver_match.url_name == 'support page' %}active{% endif %}">
             <i class="fas fa-headset"></i> <span>Поддержка</span>
+=======
+        <a href="{% url 'support' %}" class="{% if request.resolver_match.url_name == 'support' %}active{% endif %}">
+            <i class="fas fa-headset"></i> <span>Support</span>
+>>>>>>> aboba
         </a>
         <a href="{% url 'Billing Dashboard' %}" class="{% if request.resolver_match.url_name == 'Billing Dashboard' %}active{% endif %}">
             <i class="fas fa-file-invoice"></i> <span>Оплата счетов</span>
